@@ -61,7 +61,7 @@ This role use some tag that you can use for some operations without replaying th
 * Once the collection is installed, you can use the roles in your playbooks :
 
   ```yaml
-  - name: Install PostgreSQL server with replication
+  - name: Install PostgreSQL server
     hosts: postgresql
     roles:
       - role: postgresql-server-role
