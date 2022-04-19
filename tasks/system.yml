@@ -1,0 +1,15 @@
+---
+# Create user before package installation to ensure the postgres home directory can be customized
+- name: Create PostgreSQL group
+  ansible.builtin.group:
+    name: postgres
+
+- name: Create PostgreSQL user account (postgres)
+  ansible.builtin.user:
+    name: postgres
+    home: "{{ postgresql_home_dir }}"
+    create_home: no
+    shell: /bin/bash
+    group: postgres
+    comment: "PostgreSQL Server user"
+    password_lock: true

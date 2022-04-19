@@ -1,0 +1,15 @@
+---
+- name: Apply custom systemd service unit
+  ansible.builtin.template:
+    src: postgresql.service.j2
+    dest: /etc/systemd/system/postgresql.service
+    owner: root
+    group: root
+    mode: '644'
+
+- name: Ensure PostgreSQL instance is enabled and started
+  ansible.builtin.systemd:
+    name: postgresql.service
+    state: started
+    enabled: yes
+    daemon_reload: yes

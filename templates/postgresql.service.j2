@@ -1,0 +1,31 @@
+[Unit]
+Description=PostgreSQL {{ postgresql_release }} database server
+Documentation=https://www.postgresql.org/docs/{{ postgresql_release }}/static/
+After=syslog.target
+After=network.target
+
+[Service]
+Type=notify
+User=postgres
+Group=postgres
+
+# Location of database directory
+Environment=PGDATA={{ postgresql_data_dir }}
+
+# Disable OOM kill on the postmaster
+OOMScoreAdjust=-1000
+Environment=PG_OOM_ADJUST_FILE=/proc/self/oom_score_adj
+Environment=PG_OOM_ADJUST_VALUE=0
+
+ExecStartPre={{ postgresql_bin_dir }}/postgresql-{{ postgresql_release }}-check-db-dir ${PGDATA}
+ExecStart={{ postgresql_bin_dir }}/postmaster -D ${PGDATA}
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=mixed
+KillSignal=SIGINT
+
+# Do not set any timeout value, so that systemd will not kill postmaster
+# during crash recovery.
+TimeoutSec=0
+
+[Install]
+WantedBy=multi-user.target

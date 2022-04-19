@@ -1,0 +1,18 @@
+---
+- name: Apply PostgreSQL server configuration (postgresql.conf)
+  ansible.builtin.template:
+    src: "postgresql-{{ postgresql_release }}.conf.j2"
+    dest: "{{ postgresql_data_dir }}/postgresql.conf"
+    owner: postgres
+    group: postgres
+    mode: '600'
+  notify: Reload PostgreSQL
+
+- name: Apply custom host-based access configuration (pg_hba)
+  ansible.builtin.template:
+    src: pg_hba.conf.j2
+    dest: "{{ postgresql_data_dir }}/pg_hba.conf"
+    owner: postgres
+    group: postgres
+    mode: '600'
+  notify: Reload PostgreSQL

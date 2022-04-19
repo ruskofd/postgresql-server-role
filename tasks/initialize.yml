@@ -1,0 +1,29 @@
+---
+- name: Ensure directory hierarchy is created
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: postgres
+    group: postgres
+    mode: '700'
+  with_items:
+    - "{{ postgresql_root_dir }}"
+    - "{{ postgresql_home_dir }}"
+    - "{{ postgresql_data_dir }}"
+
+- name: Check if PostgreSQL data directory has already been initialized
+  ansible.builtin.stat:
+    path: "{{ postgresql_data_dir }}/PG_VERSION"
+  register: check_db_dir
+
+- name: Initialize PostgreSQL data directory
+  ansible.builtin.shell: >
+    {{ postgresql_bin_dir }}/initdb
+    --pgdata={{ postgresql_data_dir }}
+    --locale={{ postgresql_locale }} 
+    --encoding={{ postgresql_client_encoding }}
+    {{ '--data-checksums' if postgresql_checksum_enabled }}
+    {{ postgresql_initdb_extra_opts }}
+  become: yes
+  become_user: postgres
+  when: not check_db_dir.stat.exists
