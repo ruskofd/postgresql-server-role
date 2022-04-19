@@ -26,7 +26,7 @@ This Ansible role is designed to deploy and configure PostgreSQL standalone data
 
 ### Role variables
 
-The role variable documentation is located [HERE](docs/variables.md)
+The role variables are documented [HERE](docs/variables.md)
 
 ### Role tags
 
