@@ -2,7 +2,13 @@
 
 ### General informations
 
-Ansible role to deploy and configure PostgreSQL standalone instance(s)
+This Ansible role is designed to deploy and configure PostgreSQL standalone database instances on target servers.
+
+**Table of Contents**
+
+  - [Roles variables](#role-variables)
+  - [Roles tags](#role-variables)
+  - [Install and use this role](#install-and-use-this-role)
 
 **Supported Platforms**
 
