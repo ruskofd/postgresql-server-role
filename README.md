@@ -51,8 +51,9 @@ This role use some tag that you can use for some operations without replaying th
   $ cat requirements.yml
   ---
   roles:
-    - name: https://github.com/ruskofd/postgresql-server-role.git
-      type: git
+    - name: postgresql-server
+      src: https://github.com/ruskofd/postgresql-server-role.git
+      scm: git
       version: '1.0.0'
 
   $ ansible-galaxy install-f -r requirements.yml
@@ -64,5 +65,5 @@ This role use some tag that you can use for some operations without replaying th
   - name: Install PostgreSQL server
     hosts: postgresql
     roles:
-      - role: postgresql-server-role
+      - role: postgresql-server
   ```
