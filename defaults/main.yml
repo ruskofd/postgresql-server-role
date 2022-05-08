@@ -18,11 +18,18 @@ postgresql_initdb_extra_opts: ""
 postgresql_checksum_enabled: false
 
 #------------------------------------------------------------------------------
+# SERVICE
+#------------------------------------------------------------------------------
+postgresql_service_kill_signal: "SIGINT"
+postgresql_service_extra_opts: []
+
+#------------------------------------------------------------------------------
 # FILE LOCATIONS
 #------------------------------------------------------------------------------
 postgresql_root_dir: "/var/lib/postgresql"
 postgresql_data_dir: "{{ postgresql_root_dir }}/{{ postgresql_release }}/data"
 postgresql_home_dir: "{{ postgresql_root_dir }}"
+postgresql_config_dir: "{{ postgresql_data_dir }}"
 
 #------------------------------------------------------------------------------
 # CONNECTIONS AND AUTHENTICATION
@@ -155,4 +162,9 @@ postgresql_extra_configurations: []
 #------------------------------------------------------------------------------
 # PG_HBA
 #------------------------------------------------------------------------------
-postgresql_hba_entries: []
+postgresql_hba_entries: {}
+
+#------------------------------------------------------------------------------
+# USER NAME MAPS (PG_IDENT)
+#------------------------------------------------------------------------------
+postgresql_ident_entries: {}

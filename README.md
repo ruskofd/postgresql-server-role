@@ -28,6 +28,10 @@ This Ansible role is designed to deploy and configure PostgreSQL standalone data
 
 The role variables are documented [HERE](docs/variables.md)
 
+### Examples
+
+You can find some configurations examples [HERE](docs/examples.md)
+
 ### Role tags
 
 This role use some tag that you can use for some operations without replaying the entire role :
@@ -54,7 +58,7 @@ This role use some tag that you can use for some operations without replaying th
     - name: postgresql-server
       src: https://github.com/ruskofd/postgresql-server-role.git
       scm: git
-      version: '1.0.0'
+      version: '1.1.0'
 
   $ ansible-galaxy install-f -r requirements.yml
   ```

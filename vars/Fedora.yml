@@ -6,3 +6,4 @@ postgresql_packages:
   - "python3-psycopg2"
 postgresql_install_dir: "/usr/pgsql-{{ postgresql_release }}"
 postgresql_bin_dir: "{{ postgresql_install_dir }}/bin"
+postgresql_service_env_file: "/etc/sysconfig/pgsql/postgresql-{{ postgresql_release }}"

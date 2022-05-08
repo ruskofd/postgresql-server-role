@@ -1,18 +1,35 @@
 ---
-- name: Apply PostgreSQL server configuration (postgresql.conf)
+- name: Ensure PostgreSQL environment variables file exists
+  ansible.builtin.template:
+    src: "env.j2"
+    dest: "{{ postgresql_service_env_file }}"
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Ensure  PostgreSQL server configuration is applied (postgresql.conf)
   ansible.builtin.template:
     src: "postgresql-{{ postgresql_release }}.conf.j2"
-    dest: "{{ postgresql_data_dir }}/postgresql.conf"
+    dest: "{{ postgresql_config_dir }}/postgresql.conf"
     owner: postgres
     group: postgres
-    mode: '600'
+    mode: '0600'
   notify: Reload PostgreSQL
 
-- name: Apply custom host-based access configuration (pg_hba)
+- name: Ensure PostgreSQL host-based access configuration is applied (pg_hba.conf)
   ansible.builtin.template:
     src: pg_hba.conf.j2
-    dest: "{{ postgresql_data_dir }}/pg_hba.conf"
+    dest: "{{ postgresql_config_dir }}/pg_hba.conf"
     owner: postgres
     group: postgres
-    mode: '600'
+    mode: '0600'
+  notify: Reload PostgreSQL
+
+- name: Ensure PostgreSQL User Name maps configuration is applied (pg_ident.conf)
+  ansible.builtin.template:
+    src: pg_ident.conf.j2
+    dest: "{{ postgresql_config_dir }}/pg_ident.conf"
+    owner: postgres
+    group: postgres
+    mode: '0600'
   notify: Reload PostgreSQL

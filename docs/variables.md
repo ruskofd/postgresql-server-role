@@ -11,6 +11,14 @@ Role Variables
 | `postgresql_checksum_enabled`     | `false`                      | If set to true, enable checksuming on data pages to help detect corruption by the I/O system that would otherwise be silent. Enabling checksums may incur a noticeable performance penalty. |
 | `postgresql_initdb_extra_opts`    | `""`                         | Extra args to pass to the `initdb` command                       |
 
+#### Service
+
+| Name                              | Default                      | Description                                                      |
+| :-------------------------------- | :--------------------------- | :--------------------------------------------------------------- |
+| `postgresql_service_env_file`     | see [vars](../vars/)         | Defines where the PostgreSQL environment vars file should be stored (based on OS) |
+| `postgresql_service_kill_signal`  | `SIGINT`                     | Defines the POSIX signal to send to the PostgreSQL postmaster process when stopping service |
+| `postgresql_service_extra_opts`   | `{}`                         | Defines the extra arguments to pass to the PostgreSQL postmaster process when starting the instance |
+
 #### File locations
 
 | Name                              | Default                      | Description                                                      |
@@ -18,6 +26,7 @@ Role Variables
 | `postgresql_root_dir`             | `/var/lib/postgresql`        | Directory where everything related to the PostgreSQL instance is stored |
 | `postgresql_data_dir`             | `{{ postgresql_root_dir }}/{{ postgresql_release }}/data` | Directory where PostgreSQL will store database data |
 | `postgresql_home_dir`             | `{{ postgresql_root_dir }}`  | Home directory for the `postgres` user                           |
+| `postgresql_config_dir`           | `{{ postgresql_data_dir }}`  | Defines the directory where to store the different PostgreSQL configuration files |
 
 #### Connections and authentications
 
@@ -124,5 +133,11 @@ Role Variables
 | Name                              | Default                      | Description                                                      |
 | :-------------------------------- | :--------------------------- | :--------------------------------------------------------------- |
 | `postgresql_hba_entries`          | `[]`                         | Entries to set inside the `pg_hba.conf` file to manage Host-Based Access |
+
+#### pg_ident
+
+| Name                              | Default                      | Description                                                      |
+| :-------------------------------- | :--------------------------- | :--------------------------------------------------------------- |
+| `postgresql_ident_entries`        | `[]`                         | Entries to set inside the `pg_ident.conf` file to manage User Name maps |
 
 [Return to main page](../README.md)

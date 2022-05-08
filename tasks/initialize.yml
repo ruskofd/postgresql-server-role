@@ -1,5 +1,5 @@
 ---
-- name: Ensure directory hierarchy is created
+- name: Ensure PostgreSQL directory hierarchies are created
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
@@ -10,6 +10,7 @@
     - "{{ postgresql_root_dir }}"
     - "{{ postgresql_home_dir }}"
     - "{{ postgresql_data_dir }}"
+    - "{{ postgresql_config_dir }}"
 
 - name: Check if PostgreSQL data directory has already been initialized
   ansible.builtin.stat:
