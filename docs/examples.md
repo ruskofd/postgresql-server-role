@@ -30,7 +30,7 @@ More informations in the official User Name Maps [documentation](https://www.pos
 
 #### Change configuration files location
 
-On Red-Hat based systems, the default location of the PostgreSQL configurations are located inside the data directory. If you want to change it to `/etc` i.e, you can tweak some of the role variables :
+On Red-Hat based systems, the PostgreSQL configurations are located inside the data directory. If you want to change it, you can tweak some of the role variables :
 
 ```YAML
 # Defines the new directory (will be created if missing)
