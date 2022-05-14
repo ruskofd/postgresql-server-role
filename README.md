@@ -57,7 +57,7 @@ This role use some tag that you can use for some operations without replaying th
     - name: postgresql-server
       src: https://github.com/ruskofd/postgresql-server-role.git
       scm: git
-      version: '1.1.0'
+      version: '1.2.0'
 
   $ ansible-galaxy install-f -r requirements.yml
   ```
