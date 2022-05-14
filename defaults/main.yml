@@ -102,6 +102,10 @@ postgresql_logging_collector_enabled: false
 postgresql_log_directory: 'log'
 postgresql_log_filename: 'postgresql-%Y-%m-%d_%H%M%S.log'
 postgresql_log_rotation_age: '1d'
+postgresql_syslog_facility: 'LOCAL0'
+postgresql_syslog_ident: 'postgres'
+postgresql_syslog_sequence_numbers: true
+postgresql_syslog_split_messages: true
 
 # - When to Log -
 postgresql_log_min_messages: 'warning'

@@ -84,6 +84,10 @@ log_directory   = '{{ postgresql_log_directory }}'
 log_filename    = '{{ postgresql_log_filename }}'
 log_rotation_age = {{ postgresql_log_rotation_age }}
 {% endif %}
+syslog_facility = '{{ postgresql_syslog_facility }}'
+syslog_ident = '{{ postgresql_syslog_ident }}'
+syslog_sequence_numbers = {{ 'on' if postgresql_syslog_sequence_numbers else 'off' }}
+syslog_split_messages = {{ 'on' if postgresql_syslog_split_messages else 'off' }}
 
 # - When to Log -
 log_min_messages            = {{ postgresql_log_min_messages }}

@@ -86,6 +86,10 @@ Role Variables
 | `postgresql_log_min_error_statement` | `error`                   | Controls which SQL statements that cause an error condition are recorded in the server log (`DEBUG5`, `DEBUG4`, `DEBUG3`, `DEBUG2`, `DEBUG1`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `LOG`, `FATAL` and `PANIC`) |
 | `postgresql_log_min_duration_statement` | `-1`                   | Causes the duration of each completed statement to be logged if the statement ran for at least the specified amount of time |
 | `postgresql_log_timezone`         | `Etc/UTC`                    | Sets the time zone used for timestamps written in the server log |
+| `postgresql_syslog_facility`      | `LOCAL0`                     | If `postgresql_log_destination` is set to `syslog`, this parameter determines the syslog facility to be used |
+| `postgresql_syslog_ident`         | `postgres`                   | When logging to syslog is enabled, this parameter determines the program name used to identify PostgreSQL messages in syslog logs |
+| `postgresql_syslog_sequence_numbers` | `true`                    | If set to `true`, each message will be prefixed by an increasing sequence number |
+| `postgresql_syslog_split_messages` | `true`                      | If set to `true`, this parameter determines how messages are delivered to syslog. When `true`, messages are split by lines, and long lines are split so that they will fit into 1024 bytes. When `false`, PostgreSQL server log messages are delivered to the syslog service as is, and it is up to the syslog service to cope with the potentially bulky messages |
 
 #### Statistics
 
