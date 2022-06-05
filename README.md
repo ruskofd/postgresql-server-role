@@ -14,8 +14,8 @@ This Ansible role is designed to deploy and configure PostgreSQL standalone data
 
 **Supported Platforms**
 
-  - RHEL/CentOS Stream 8/9
-  - Fedora 35/36
+  - Red Hat Enterprise Linux 8.x/9.x
+  - Fedora 36
 
 **Supported PostgreSQL releases**
 
