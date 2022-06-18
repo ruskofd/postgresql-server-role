@@ -9,7 +9,6 @@
       profiles=
       state=disabled
   when: ansible_distribution_major_version|int >= 8
-  tags: pg_install
 
 - name: Add PostgreSQL 'common' RPM repository
   ansible.builtin.yum_repository:
@@ -19,7 +18,6 @@
     enabled: yes
     gpgcheck: yes
     gpgkey: "https://download.postgresql.org/pub/repos/yum/RPM-GPG-KEY-PGDG-{{ postgresql_release }}"
-  tags: pg_install
 
 - name: Add PostgreSQL {{ postgresql_release }} 'server' RPM repository
   ansible.builtin.yum_repository:
@@ -29,4 +27,3 @@
     enabled: yes
     gpgcheck: yes
     gpgkey: "https://download.postgresql.org/pub/repos/yum/RPM-GPG-KEY-PGDG-{{ postgresql_release }}"
-  tags: pg_install

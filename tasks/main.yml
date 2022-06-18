@@ -2,11 +2,6 @@
 - name: Define PostgreSQL release version
   ansible.builtin.set_fact:
     postgresql_release: "{{ postgresql_version.split('.')[0] }}"
-  tags:
-    - pg_install
-    - pg_initdb
-    - pg_config
-    - pg_service
 
 - name: Include OS-specific variables
   include_vars: "{{ item }}"
@@ -15,34 +10,23 @@
     - "{{ ansible_distribution }}.yml"
     - "{{ ansible_os_family }}-{{ ansible_distribution_major_version }}.yml"
     - "{{ ansible_os_family }}.yml"
-  tags:
-    - pg_install
-    - pg_initdb
-    - pg_config
-    - pg_service
 
 - name: Pre-installation system tasks
   import_tasks: system.yml
-  tags: pg_install
 
 - name: OS-specific tasks
   include_tasks: "setup-{{ ansible_os_family }}.yml"
-  tags: pg_install
 
 - name: Install PostgreSQL server
   ansible.builtin.package:
     name: "{{ postgresql_packages }}"
     state: present
-  tags: pg_install
 
 - name: Initialize PostgreSQL instance
   import_tasks: initialize.yml
-  tags: pg_initdb
 
 - name: Configure PostgreSQL instance
   import_tasks: configure.yml
-  tags: pg_config
 
 - name: Manage PostgreSQL service
   import_tasks: service.yml
-  tags: pg_service

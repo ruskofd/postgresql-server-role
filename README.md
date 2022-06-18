@@ -33,15 +33,6 @@ The role variables are documented [HERE](docs/variables.md)
 
 You can find some configurations examples [HERE](docs/examples.md)
 
-### Role tags
-
-This role use some tag that you can use for some operations without replaying the entire role :
-
-- `pg_install` : manage PostgreSQL repositories and install server packages
-- `pg_initdb` : initialize the database
-- `pg_config` : deliver the PostgreSQL configurations (`postgresql.conf` and `pg_hba.conf`)
-- `pg_service` : deliver the PostgreSQL systemd unit and manage service state
-
 ### Install and use this role
 
 * Install the role using the command-line :
