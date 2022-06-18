@@ -70,7 +70,7 @@ Role Variables
 | :-------------------------------- | :--------------------------- | :--------------------------------------------------------------- |
 | `postgresql_max_wal_senders`      | `10`                         | Specifies the maximum number of concurrent connections from standby servers or streaming base backup clients (`primary` node only) |
 | `postgresql_max_replication_slots`| `10`                         | Specifies the maximum number of replication slots that the server can support (`primary` node only) |
-| `postgresql_synchronous_standby_names`| `[]`                     | Specifies a list of standby servers that can support synchronous replication |
+| `postgresql_synchronous_standby_names`| `""`                     | Specifies a list of standby servers that can support synchronous replication |
 | `postgresql_hot_standby`          | `true`                       | Specifies whether or not you can connect and run queries during recovery (`standby` node(s) only ) |
 
 #### Reporting and logging

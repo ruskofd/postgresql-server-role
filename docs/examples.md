@@ -26,3 +26,31 @@ postgresql_ident_entries:
 ```
 
 More informations in the official User Name Maps [documentation](https://www.postgresql.org/docs/current/auth-username-maps.html)
+
+#### Manage PostgreSQL synchronous streaming replication
+
+By default, PostgreSQL streaming is asynchronous, but you can configure it to be synchronous.
+
+```YAML
+# You need to define a unique name for each replica node
+postgresql_cluster_name: "server1"
+
+# Enable synchronous replication (there are multiples options such as 'on', 'remote_write' and 'remote_apply')
+postgresql_synchronous_commit: 'on'
+
+# Define the nodes that should be replicated synchronously
+postgresql_synchronous_standby_names: "server1, server2, server3"
+```
+
+You can also define different topologies for synchronous replication :
+
+```YAML
+# This will cause each commit to wait for replies from three higher-priority standbys chosen from standby servers s1, s2, s3 and s4. 
+# The standbys whose names appear earlier in the list are given higher priority and will be considered as synchronous.
+postgresql_synchronous_standby_names: 'FIRST 3 (server1, server2, server3, server4)'
+
+# This will cause synchronous commit to wait for reply from any 2 standby servers
+postgresql_synchronous_standby_names: 'ANY 2 (*)'
+```
+
+More informations in the official replication [documentation](https://www.postgresql.org/docs/current/runtime-config-replication.html)

@@ -87,7 +87,7 @@ postgresql_max_wal_senders: 10
 postgresql_max_replication_slots: 10
 
 # - Primary Server -
-postgresql_synchronous_standby_names: []
+postgresql_synchronous_standby_names: ""
 
 # - Standby Servers -
 postgresql_hot_standby: true

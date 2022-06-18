@@ -65,7 +65,7 @@ max_wal_senders = {{ postgresql_max_wal_senders }}
 max_replication_slots = {{ postgresql_max_replication_slots }}
 
 # - Primary Server -
-synchronous_standby_names = '{% for name in postgresql_synchronous_standby_names %}{{ name }}{%- if not loop.last %}, {% endif %}{% endfor -%}'
+synchronous_standby_names = '{{ postgresql_synchronous_standby_names }}'
 {% elif postgresql_role == "standby" -%}
 # - Standby Servers -
 hot_standby = {{ 'on' if postgresql_hot_standby else 'off' }}
