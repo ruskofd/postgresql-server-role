@@ -10,14 +10,11 @@ Group=postgres
 EnvironmentFile={{ postgresql_service_env_file }}
 # Disable OOM kill on the postmaster
 OOMScoreAdjust=-1000
-Environment=PG_OOM_ADJUST_FILE=/proc/self/oom_score_adj
-Environment=PG_OOM_ADJUST_VALUE=0
-ExecStartPre={{ postgresql_bin_dir }}/postgresql-{{ postgresql_release }}-check-db-dir ${PGDATA}
-ExecStart={{ postgresql_bin_dir }}/postmaster -D ${PGDATA} ${PGOPTIONS}
+ExecStartPre={{ postgresql_bin_dir }}/postgresql-{{ postgresql_release }}-check-db-dir {{ postgresql_data_dir }}
+ExecStart={{ postgresql_bin_dir }}/postmaster -c config_file={{ postgresql_config_dir }}/postgresql.conf {{ postgresql_service_extra_opts | join(' ') }}
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=mixed
 KillSignal={{ postgresql_service_kill_signal }}
-
 # Do not set any timeout value, so that systemd will not kill postmaster
 # during crash recovery.
 TimeoutSec=0

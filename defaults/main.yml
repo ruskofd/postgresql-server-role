@@ -3,7 +3,7 @@
 # GENERAL
 #------------------------------------------------------------------------------
 # Define the major and minor version of PostgreSQL to install
-postgresql_version: "14.2"
+postgresql_version: "14.4"
 
 # Define the instance mode (values: primary or standby)
 postgresql_role: primary
@@ -29,7 +29,7 @@ postgresql_service_extra_opts: []
 postgresql_root_dir: "/var/lib/postgresql"
 postgresql_data_dir: "{{ postgresql_root_dir }}/{{ postgresql_release }}/data"
 postgresql_home_dir: "{{ postgresql_root_dir }}"
-postgresql_config_dir: "{{ postgresql_data_dir }}"
+postgresql_config_dir: "/etc/postgresql/{{ postgresql_release }}"
 
 #------------------------------------------------------------------------------
 # CONNECTIONS AND AUTHENTICATION

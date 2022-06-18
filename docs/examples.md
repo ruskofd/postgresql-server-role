@@ -26,26 +26,3 @@ postgresql_ident_entries:
 ```
 
 More informations in the official User Name Maps [documentation](https://www.postgresql.org/docs/current/auth-username-maps.html)
-
-
-#### Change configuration files location
-
-On Red-Hat based systems, the PostgreSQL configurations are located inside the data directory. If you want to change it, you can tweak some of the role variables :
-
-```YAML
-# Defines the new directory (will be created if missing)
-postgresql_config_dir: "/etc/postgresql/14"
-
-# Add an extra argument to the postmaster
-postgresql_service_extra_opts: [ "--config_file=/etc/postgresql/14/postgresql.conf" ]
-```
-
-All PostgreSQL configuration files will be pushed into the `/etc/postgresql/14` directory :
-
-```SHELL
-[root@pg ~]# ls -l /etc/postgresql/14/
-total 16
--rw------- 1 postgres postgres  783 May  8 16:46 pg_hba.conf
--rw------- 1 postgres postgres  287 May  8 16:39 pg_ident.conf
--rw------- 1 postgres postgres 4185 May  8 16:32 postgresql.conf
-```
