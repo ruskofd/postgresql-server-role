@@ -29,7 +29,7 @@ More informations in the official User Name Maps [documentation](https://www.pos
 
 #### Manage PostgreSQL synchronous streaming replication
 
-By default, PostgreSQL streaming is asynchronous, but you can configure it to be synchronous.
+By default, PostgreSQL streaming is asynchronous, but you can configure it to be synchronous if needed.
 
 ```YAML
 # You need to define a unique name for each replica node
