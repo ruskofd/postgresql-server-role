@@ -55,3 +55,15 @@ postgresql_synchronous_standby_names: 'ANY 2 (*)'
 ```
 
 More informations in the official replication [documentation](https://www.postgresql.org/docs/current/runtime-config-replication.html)
+
+#### Switch back to configurations located in data directory
+
+Since version 2.0.0 of this role, PostgreSQL configuration files are now located in `/etc/postgresql/<postgresql release>` directory by default. This change helps to manage configurations outside of the data directory, especially for streaming replication setup (there is no need to save/restore configurations before/after the initial basebackup anymore).
+
+If you want to use the default PostgreSQL behavior by having the configurations inside the data directory, simply tweak this variable :
+
+```YAML
+postgresql_config_dir: "{{ postgresql_data_dir }}"
+```
+
+[Return to main page](../README.md)
