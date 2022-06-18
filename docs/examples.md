@@ -45,8 +45,9 @@ postgresql_synchronous_standby_names: "server1, server2, server3"
 You can also define different topologies for synchronous replication :
 
 ```YAML
-# This will cause each commit to wait for replies from three higher-priority standbys chosen from standby servers s1, s2, s3 and s4. 
-# The standbys whose names appear earlier in the list are given higher priority and will be considered as synchronous.
+# This will cause each commit to wait for replies from three higher-priority standbys chosen 
+# from standby servers s1, s2, s3 and s4. The standbys whose names appear earlier in the 
+# list are given higher priority and will be considered as synchronous.
 postgresql_synchronous_standby_names: 'FIRST 3 (server1, server2, server3, server4)'
 
 # This will cause synchronous commit to wait for reply from any 2 standby servers
