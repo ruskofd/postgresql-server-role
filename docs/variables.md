@@ -5,7 +5,7 @@ Role Variables
 
 | Name                              | Default                      | Description                                                      |
 | :-------------------------------- | :--------------------------- | :--------------------------------------------------------------- |
-| `postgresql_version`              | `14.2`                       | Define the package version of PostgreSQL to install              |
+| `postgresql_version`              | `14.4`                       | Define the package version of PostgreSQL to install              |
 | `postgresql_role`                 | `primary`                    | Define the role of the instance (`primary` or `standby`). This adjust few settings to prepare instance for replication depending on the given role. Set this to `primary` for standalone instance(s). |
 | `postgresql_cluster_name`         | `null`                       | Sets a name that identifies this database cluster (instance) for various purposes. The cluster name appears in the process title for all server processes in this cluster. Moreover, it is the default application name for a standby connection |
 | `postgresql_checksum_enabled`     | `false`                      | If set to true, enable checksuming on data pages to help detect corruption by the I/O system that would otherwise be silent. Enabling checksums may incur a noticeable performance penalty. |
@@ -26,7 +26,7 @@ Role Variables
 | `postgresql_root_dir`             | `/var/lib/postgresql`        | Directory where everything related to the PostgreSQL instance is stored |
 | `postgresql_data_dir`             | `{{ postgresql_root_dir }}/{{ postgresql_release }}/data` | Directory where PostgreSQL will store database data |
 | `postgresql_home_dir`             | `{{ postgresql_root_dir }}`  | Home directory for the `postgres` user                           |
-| `postgresql_config_dir`           | `{{ postgresql_data_dir }}`  | Defines the directory where to store the different PostgreSQL configuration files |
+| `postgresql_config_dir`           | `/etc/postgresql/{{ postgresql_release }}` | Defines the directory where to store the different PostgreSQL configuration files |
 
 #### Connections and authentications
 
