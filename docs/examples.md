@@ -6,7 +6,7 @@ Examples
 ```YAML
 postgresql_hba_entries:
 - { type: host,  db: 'mydb',        user: 'myuser',      address: '0.0.0.0/0',        method: 'scram-sha-256' }
-- { type: host,  ds: 'mydb1,mydb2', user: 'mike',        address: '192.168.122.0/24', method: 'md5' }
+- { type: host,  db: 'mydb1,mydb2', user: 'mike',        address: '192.168.122.0/24', method: 'md5' }
 - { type: local, db: 'telegraf',    user: 'telegraf',    method: 'peer' }
 - { type: host,  db: 'replication', user: 'replication', address: '192.168.122.10/32' method: 'scram-sha-256' }
 ```
@@ -29,7 +29,7 @@ More informations in the official User Name Maps [documentation](https://www.pos
 
 #### Manage PostgreSQL synchronous streaming replication
 
-By default, PostgreSQL streaming is asynchronous, but you can configure it to be synchronous if needed.
+By default, PostgreSQL streaming is asynchronous, but you can configure it to be synchronous if needed :
 
 ```YAML
 # You need to define a unique name for each replica node
