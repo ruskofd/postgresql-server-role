@@ -38,7 +38,7 @@ You can find some configurations examples [HERE](docs/examples.md)
 * Install the role using the command-line :
 
   ```shell
-  $ ansible-galaxy collection install git+https://github.com/ruskofd/postgresql-server-role.git
+  $ ansible-galaxy role install git+https://github.com/ruskofd/postgresql-server-role.git
   ```
 
 * Install the collection in your projects using a `requirements.yml` file and `ansible-galaxy` command-line :
